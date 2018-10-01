@@ -1,0 +1,13 @@
+{{ form_start(formAnnonce) }}
+{{ form_errors(formAnnonce) }}
+    <label>{{ form_label(formAnnonce.titre)}}</label>
+{{ form_widget(formAnnonce.titre) }}<br>
+<label>{{ form_label(formAnnonce.description)}} : </label>
+    {{ form_widget(formAnnonce.description)}}<br>
+    <label>{{ form_label(formAnnonce.createdDate)}} : </label>
+{{ form_widget(formAnnonce.createdDate) }}
+
+{{ form_row(formAnnonce.updatedDate) }}<br>
+    <input type="submit" value="Modifier">
+{{ form_rest(formAnnonce)}}
+{{ form_end(formAnnonce) }}

@@ -1,0 +1,48 @@
+<h1>BIENVENUE</h1>
+<h2>Ajouter ici votre petite annonce</h2>
+
+<form action="/insertion" method="POST">
+    <label>Titre :</label><input type="text" name="titre"></br>
+    <label>Description :</label><input type="text" name="decrire"></br>
+    <label>Date de publication :</label><input type="date" name="create"></br>
+    <label>date de modification :</label><input type="date" name="update"></br>
+<label>ajouter un fichier</label><input id="fichier" type="file" onchange="base64(event)" name="fichier" multiple="true"></br>
+<input type="text" id="old" name="data">
+    <input type="submit" value="Ajouter">
+
+</form>
+
+
+<script>
+function base64(event){
+        var file = event.target.files;
+        let baseTableau = [];
+
+            var promise1 = new Promise(function(resolve, reject) {
+                setTimeout(function() { 
+                    resolve('foo');
+                }, 300);
+            });
+            promise1.then(res => {
+                document.getElementById('old').value = baseTableau;
+                console.log(baseTableau);
+            })
+            console.log(promise1);
+
+        function getData(file){
+            var reader = new FileReader();
+            
+            console.log(file.name, file.type);
+            reader.readAsDataURL(file);
+            reader.onload = function() {
+            var onlyBase =reader.result.toString();          
+                baseTableau.push(onlyBase);
+            }
+        }
+        for(var i = 0; i<file.length; i++){
+            var bin = getData(file[i]);
+        }
+        
+}
+
+</script>

@@ -1,0 +1,43 @@
+<h1>Liste des annonces</h1>
+<style>
+    table {
+        border-collapse: collapse;
+    }
+
+    table, th, td {
+        border: 1px solid black;
+    }
+</style>
+<table>
+    <tr>
+        <th>Titres</th>
+        <th>Description</th>
+        <th>Date de Publication</th>
+        <th>Date de modification</th>
+        <th>Media</th>
+        <th>Action</th>
+        
+    </tr>
+    
+{% for annonce in annonce %}
+        <tr>
+            <td>{{annonce.titre}}</td>
+<td>{{annonce.description}}</td>
+<td>{{annonce.createddate}}</td>
+<td>{{annonce.updateddate}}</td>
+<td>
+    {% for media in annonce.media %}
+        <img src="{{ asset('media/'~media.url) }}" alt="image" width="100px" heigth="50px"/>
+    {% endfor %}
+</td>
+
+<td>
+    <a href="{{ path('supprimer',{'id':annonce.id}) }}">supprimer</a>
+</td>
+<td>
+    <a href="{{ path('modifier',{'id':annonce.id}) }}">Modifier</a>
+</td>
+        </tr>
+        {% endfor %}
+</table><br>
+<a href="{{ path('acceuil')}}">Ajouter nouveau annonce</a>
